@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Ynov_Workshare.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Ynov_Workshare.Views.LoginWindow.LoginView"
+        x:DataType="vm:LoginViewViewModel">
+    <Design.DataContext>
+        <vm:LoginViewViewModel/>
+    </Design.DataContext>
+    <UserControl.Styles>
+        <Style Selector="TextBlock.h1">
+            <Setter Property="FontSize" Value="50"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+    </UserControl.Styles>
+    <Grid Margin="20">
+        <TextBlock TextAlignment="Center" Classes="h1"> Bienvenu sur WorkShare ! </TextBlock>
+        <StackPanel VerticalAlignment="Center">
+            <!-- Zone de saisie du login -->
+            <TextBlock Text="Nom d'utilisateur"/>
+            <TextBox Margin="0,0,0,10"/>
+            
+            <!-- Zone de saisie du mot de passe -->
+            <TextBlock Text="Mot de passe"/>
+            <TextBox Margin="0,0,0,10"/>
+            
+            <!-- Bouton de connexion -->
+            <Button Content="Me connecter" Click="LoginButton_Click" HorizontalAlignment="Center" Background="DodgerBlue" Margin="0,0,0,10"/>
+            
+            <!-- Liens -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Mot de passe oublié?" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBlock Text="|"/>
+                <TextBlock Text="Je n'ai pas encore de compte" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
