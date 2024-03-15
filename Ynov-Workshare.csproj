@@ -23,4 +23,23 @@
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.6"/>
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.6"/>
     </ItemGroup>
+
+
+    <ItemGroup>
+      <Compile Update="Views\MainWindow\MainWindow.axaml.cs">
+        <DependentUpon>MainWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\MainWindow\MainWindow.axaml" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Views\HomeWindow\HomeWindow.axaml" />
+      <UpToDateCheckInput Remove="Views\HomeView\HomeView.axaml" />
+    </ItemGroup>
 </Project>

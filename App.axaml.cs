@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Ynov_Workshare.ViewModels;
 using Ynov_Workshare.Views;
+using Ynov_Workshare.Views.LoginWindow;
 
 namespace Ynov_Workshare;
 
@@ -17,7 +18,7 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow
+            desktop.MainWindow = new MainWindow()
             {
                 DataContext = new MainWindowViewModel(),
             };
