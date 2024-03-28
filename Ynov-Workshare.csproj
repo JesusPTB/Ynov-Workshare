@@ -9,7 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Models\"/>
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
 
@@ -17,29 +16,35 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.6"/>
         <PackageReference Include="Avalonia.Desktop" Version="11.0.6"/>
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.6"/>
+<!--        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.6"/>-->
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.6"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.6"/>
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.6"/>
+        <PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.3"/>
     </ItemGroup>
 
 
     <ItemGroup>
-      <Compile Update="Views\MainWindow\MainWindow.axaml.cs">
-        <DependentUpon>MainWindow.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
+        <Compile Update="Views\MainWindow\MainWindow.axaml.cs">
+            <DependentUpon>MainWindow.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Views\ChatView\ChatView.axaml.cs">
+            <DependentUpon>ChatView.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
 
     <ItemGroup>
-      <AdditionalFiles Include="Views\MainWindow\MainWindow.axaml" />
+        <AdditionalFiles Include="Views\MainWindow\MainWindow.axaml"/>
     </ItemGroup>
 
 
     <ItemGroup>
-      <UpToDateCheckInput Remove="Views\HomeWindow\HomeWindow.axaml" />
-      <UpToDateCheckInput Remove="Views\HomeView\HomeView.axaml" />
+        <UpToDateCheckInput Remove="Views\HomeWindow\HomeWindow.axaml"/>
+        <UpToDateCheckInput Remove="Views\HomeView\HomeView.axaml"/>
     </ItemGroup>
 </Project>

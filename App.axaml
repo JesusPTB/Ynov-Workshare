@@ -2,14 +2,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Ynov_Workshare.App"
              xmlns:local="using:Ynov_Workshare"
+             xmlns:styling="using:FluentAvalonia.Styling"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
-  
+
+    <Application.Resources>
+        <Color x:Key="SystemAccentColor">Blue</Color>
+        <Color x:Key="SystemAccentColorLight1">LightBlue</Color>
+        <Color x:Key="SystemAccentColorDark1">DarkBlue</Color>
+    </Application.Resources>
     <Application.Styles>
-        <FluentTheme />
+        <styling:FluentAvaloniaTheme  />
+        <!-- <FluentTheme /> -->
     </Application.Styles>
 </Application>
