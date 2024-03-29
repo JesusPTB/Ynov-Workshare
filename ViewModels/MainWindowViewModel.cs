@@ -15,7 +15,7 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(IEnumerable<Message> messages)
     {
         _connection = new HubConnectionBuilder()
-            .WithUrl("http://localhost:5188/ChatHub")
+            .WithUrl("http://localhost:8080/ChatHub")
             .Build();
 
         ListMessages = new ObservableCollection<Message>(messages);
@@ -30,6 +30,7 @@ public class MainWindowViewModel : ViewModelBase
     public string MessageInput { get; set; } = string.Empty;
 
     public ObservableCollection<Message> ListMessages { get; }
+    
     private async void Connect()
     {
         _connection.On<string, string>("ReceiveMessage", (user, message) =>
@@ -53,9 +54,7 @@ public class MainWindowViewModel : ViewModelBase
     private async void SendMessage()
     {
         Console.WriteLine("Sending message");
-                
-        await _connection.InvokeAsync("SendMessage", UserInput, MessageInput);
+        await _connection.InvokeAsync("SendMessageToAll", UserInput, MessageInput);
         Console.WriteLine("Message sent");
-
     }
 }
