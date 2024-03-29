@@ -15,7 +15,7 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(IEnumerable<Message> messages)
     {
         _connection = new HubConnectionBuilder()
-            .WithUrl("http://localhost:8080/ChatHub")
+            .WithUrl("http://localhost:5188/ChatHub")
             .Build();
 
         ListMessages = new ObservableCollection<Message>(messages);
