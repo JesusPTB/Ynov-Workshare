@@ -14,6 +14,6 @@ public partial class LoginView : UserControl
     {
         // Charger et afficher la vue Home
         var mainWindow = (MainWindow)VisualRoot;
-        mainWindow.Content = new HomeView.HomeView();
+        mainWindow.Content = new HomeView();
     }
 }
