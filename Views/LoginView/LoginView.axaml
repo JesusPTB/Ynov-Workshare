@@ -19,16 +19,14 @@
         <TextBlock TextAlignment="Center" Classes="h1"> Bienvenu sur WorkShare ! </TextBlock>
         <StackPanel VerticalAlignment="Center">
             <!-- Zone de saisie du login -->
-            <TextBlock Text="Nom d'utilisateur"  />
-            <TextBox Margin="0,0,0,10" Name="Username"/>
+            <TextBox Margin="0,0,0,10" Watermark="Nom d'utilisateur" AcceptsReturn="False"/>
 
             <!-- Zone de saisie du mot de passe -->
-            <TextBlock Text="Mot de passe" />
-            <TextBox Margin="0,0,0,10" Name="Password"/>
+            <TextBox Margin="0,0,0,10" Watermark="Mot de passe" PasswordChar="*" AcceptsReturn="False"/>
 
             <!-- Bouton de connexion -->
-            <Button Content="Me connecter" Click="LoginButton_Click" HorizontalAlignment="Center"
-                    Background="DodgerBlue" Margin="0,0,0,10" />
+            <Button Content="Me connecter" HorizontalAlignment="Center"
+                    Background="DodgerBlue" Margin="0,0,0,10" Command="{Binding LoginAsync}" />
 
             <!-- Liens -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
