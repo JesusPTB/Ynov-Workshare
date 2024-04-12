@@ -1,8 +1,6 @@
-using System.Net.Http;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 
-namespace Ynov_Workshare.Views.LoginWindow;
+namespace Ynov_Workshare.Views;
 
 public partial class LoginView : UserControl
 {

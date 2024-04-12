@@ -4,11 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:Ynov_Workshare.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Ynov_Workshare.Views.LoginWindow.LoginView"
+             x:Class="Ynov_Workshare.Views.LoginView"
              x:DataType="vm:LoginViewViewModel">
-    <Design.DataContext>
-        <vm:LoginViewViewModel />
-    </Design.DataContext>
     <UserControl.Styles>
         <Style Selector="TextBlock.h1">
             <Setter Property="FontSize" Value="50" />
@@ -19,10 +16,10 @@
         <TextBlock TextAlignment="Center" Classes="h1"> Bienvenu sur WorkShare ! </TextBlock>
         <StackPanel VerticalAlignment="Center">
             <!-- Zone de saisie du login -->
-            <TextBox Margin="0,0,0,10" Watermark="Nom d'utilisateur" AcceptsReturn="False"/>
+            <TextBox Margin="0,0,0,10" Watermark="Nom d'utilisateur" AcceptsReturn="False" Text="{Binding Username}"/>
 
             <!-- Zone de saisie du mot de passe -->
-            <TextBox Margin="0,0,0,10" Watermark="Mot de passe" PasswordChar="*" AcceptsReturn="False"/>
+            <TextBox Margin="0,0,0,10" Watermark="Mot de passe" PasswordChar="*" AcceptsReturn="False" Text="{Binding Password}"/>
 
             <!-- Bouton de connexion -->
             <Button Content="Me connecter" HorizontalAlignment="Center"

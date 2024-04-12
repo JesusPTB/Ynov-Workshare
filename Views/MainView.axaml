@@ -8,11 +8,6 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Ynov_Workshare.Views.MainView"
              x:DataType="viewModels:MainWindowViewModel">
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <viewModels:MainWindowViewModel />
-    </Design.DataContext>
 
     <controls:NavigationView 
         PaneDisplayMode="LeftCompact"
@@ -21,8 +16,7 @@
         SelectionChanged="NavigationView_OnSelectionChanged"
         > 
         <controls:NavigationView.MenuItems>
-            <controls:NavigationViewItem Content="Accueil"  >
-            </controls:NavigationViewItem>
+            <controls:NavigationViewItem Content="Accueil" />
             <controls:NavigationViewItem Content="Groupes" />
             <controls:NavigationViewItem Content="Mon compte" />
         </controls:NavigationView.MenuItems>
