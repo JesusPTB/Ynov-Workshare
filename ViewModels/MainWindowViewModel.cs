@@ -11,7 +11,7 @@ namespace Ynov_Workshare.ViewModels;
 public class MainWindowViewModel : ViewModelBase
 {
     private readonly HubConnection _connection;
-
+    
     public MainWindowViewModel(IEnumerable<Message> messages)
     {
         _connection = new HubConnectionBuilder()

@@ -19,12 +19,12 @@
         <TextBlock TextAlignment="Center" Classes="h1"> Bienvenu sur WorkShare ! </TextBlock>
         <StackPanel VerticalAlignment="Center">
             <!-- Zone de saisie du login -->
-            <TextBlock Text="Nom d'utilisateur" />
-            <TextBox Margin="0,0,0,10" />
+            <TextBlock Text="Nom d'utilisateur"  />
+            <TextBox Margin="0,0,0,10" Name="Username"/>
 
             <!-- Zone de saisie du mot de passe -->
             <TextBlock Text="Mot de passe" />
-            <TextBox Margin="0,0,0,10" />
+            <TextBox Margin="0,0,0,10" Name="Password"/>
 
             <!-- Bouton de connexion -->
             <Button Content="Me connecter" Click="LoginButton_Click" HorizontalAlignment="Center"
