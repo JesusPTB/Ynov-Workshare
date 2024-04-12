@@ -18,6 +18,9 @@ public partial class LoginView : UserControl
 
     private void LoginButton_Click(object sender, RoutedEventArgs e)
     {
+        // Charger et afficher la vue Home
+        var mainWindow = (MainWindow)VisualRoot;
+        mainWindow.Content = new HomeView();
         //TODO: appeler fonction connexion
     }
 }

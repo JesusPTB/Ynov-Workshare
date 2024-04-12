@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:viewModels="clr-namespace:Ynov_Workshare.ViewModels"
+             xmlns:views="clr-namespace:Ynov_Workshare.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Ynov_Workshare.Views.MainView"
              x:DataType="viewModels:MainWindowViewModel">
@@ -13,39 +14,20 @@
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
 
-    <controls:NavigationView > 
+    <controls:NavigationView 
+        PaneDisplayMode="LeftCompact"
+        IsSettingsVisible="False"
+        Name="NavigationView"
+        SelectionChanged="NavigationView_OnSelectionChanged"
+        > 
         <controls:NavigationView.MenuItems>
-            <controls:NavigationViewItem Content="Home" />
-            <controls:NavigationViewItem Content="Chat" />
-            <controls:NavigationViewItem Content="Settings" />
+            <controls:NavigationViewItem Content="Accueil"  >
+            </controls:NavigationViewItem>
+            <controls:NavigationViewItem Content="Groupes" />
+            <controls:NavigationViewItem Content="Mon compte" />
         </controls:NavigationView.MenuItems>
         <controls:NavigationView.Content>
-            <!-- <views:ChatView /> -->
-            <StackPanel>
-                <Grid Background="Chartreuse">
-                    <StackPanel Margin="20">
-                        <ListBox ItemsSource="{Binding ListMessages}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding User}" FontWeight="Bold" />
-                                        <TextBlock Text="{Binding Content}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <TextBlock Margin="0 5">User:</TextBlock>
-                        <TextBox Text="{Binding UserInput}" Watermark="Enter your name" />
-                        <TextBlock Margin="0 15 0 5">Message:</TextBlock>
-                        <TextBox Text="{Binding MessageInput}" Height="100" AcceptsReturn="True" TextWrapping="Wrap" />
-                        <Button Content="Envoyer" Command="{Binding SendMessageCommand}" />
-
-                        <Button Content="Se Connecter" Command="{Binding ConnectCommand}" />
-
-                    </StackPanel>
-
-                </Grid>
-            </StackPanel>
+            <views:HomeView />
         </controls:NavigationView.Content>
     </controls:NavigationView>
 
