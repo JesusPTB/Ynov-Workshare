@@ -2,12 +2,17 @@ namespace Ynov_Workshare.Models;
 
 public class LoginForm
 {
-    public string Email { get; set; }
-    public string Password { get; set; }
+    public string? Email { get; set; }
+    public string? Password { get; set; }
 
-    public LoginForm(string email, string password)
+    public LoginForm(string? email, string? password)
     {
         this.Email = email;
         this.Password = password;
+    }
+    
+    public LoginForm()
+    {
+        
     }
 }

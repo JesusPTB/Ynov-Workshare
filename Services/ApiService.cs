@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Ynov_Workshare.Models;
 
 namespace Ynov_Workshare;
 
@@ -30,7 +31,7 @@ public class ApiService
         {
             throw new Exception($"HTTP Error {(int)response.StatusCode}: {response.ReasonPhrase}");
         }
-
+        //var obj =  response.Content.ReadFromJsonAsync<UserDto>();
         using (var responseStream = await response.Content.ReadAsStreamAsync())
         {
             return await JsonSerializer.DeserializeAsync<T>(responseStream);
@@ -45,20 +46,23 @@ public class ApiService
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         using var response = await _httpClient.GetAsync(endpoint);
+        
         response.EnsureSuccessStatusCode();
         return await DeserializeResponse<T>(response);
     }
     
-    public async Task<T> Post<T>(string endpoint, object data, string? token = null)
+    public async Task<HttpResponseMessage?> Post<T>(string endpoint, object data, string? token = null)
     {
         //CheckTokenValidity();
     
         if(token != null)
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-        using var response = await _httpClient.PostAsJsonAsync(endpoint, data);
+        var response = await _httpClient.PostAsJsonAsync(endpoint, data);
+        var obj =  response.Content.ReadFromJsonAsync<UserDto>();
         response.EnsureSuccessStatusCode();
-        return await DeserializeResponse<T>(response);
+        return response;
+
     }
 
     public async Task<T> Put<T>(string endpoint, object data, string? token = null)
@@ -69,6 +73,7 @@ public class ApiService
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         using var response = await _httpClient.PutAsJsonAsync(endpoint, data);
+        
         response.EnsureSuccessStatusCode();
         return await DeserializeResponse<T>(response);
     }

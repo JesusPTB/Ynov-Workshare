@@ -1,31 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Ynov_dev\\M1\\dev_log\\Ynov-Workshare\\Ynov-Workshare.csproj": {}
+    "/Users/sada/Projets/Workshare/Ynov-Workshare/Ynov-Workshare.csproj": {}
   },
   "projects": {
-    "D:\\Ynov_dev\\M1\\dev_log\\Ynov-Workshare\\Ynov-Workshare.csproj": {
+    "/Users/sada/Projets/Workshare/Ynov-Workshare/Ynov-Workshare.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Ynov_dev\\M1\\dev_log\\Ynov-Workshare\\Ynov-Workshare.csproj",
+        "projectUniqueName": "/Users/sada/Projets/Workshare/Ynov-Workshare/Ynov-Workshare.csproj",
         "projectName": "Ynov-Workshare",
-        "projectPath": "D:\\Ynov_dev\\M1\\dev_log\\Ynov-Workshare\\Ynov-Workshare.csproj",
-        "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "D:\\Ynov_dev\\M1\\dev_log\\Ynov-Workshare\\obj\\",
+        "projectPath": "/Users/sada/Projets/Workshare/Ynov-Workshare/Ynov-Workshare.csproj",
+        "packagesPath": "/Users/sada/.nuget/packages/",
+        "outputPath": "/Users/sada/Projets/Workshare/Ynov-Workshare/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/sada/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,9 +59,17 @@
               "target": "Package",
               "version": "[11.0.6, )"
             },
-            "Avalonia.Themes.Fluent": {
+            "FluentAvaloniaUI": {
               "target": "Package",
-              "version": "[11.0.6, )"
+              "version": "[2.0.5, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
@@ -85,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -13,19 +13,25 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Ynov-Workshare
-build_property.ProjectDir = D:\Ynov_dev\M1\dev_log\Ynov-Workshare\
+build_property.ProjectDir = /Users/sada/Projets/Workshare/Ynov-Workshare/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[D:/Ynov_dev/M1/dev_log/Ynov-Workshare/Views/MainWindow/MainWindow.axaml]
+[/Users/sada/Projets/Workshare/Ynov-Workshare/Views/MainWindow/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/Ynov_dev/M1/dev_log/Ynov-Workshare/App.axaml]
+[/Users/sada/Projets/Workshare/Ynov-Workshare/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/Ynov_dev/M1/dev_log/Ynov-Workshare/Views/HomeView/HomeView.axaml]
+[/Users/sada/Projets/Workshare/Ynov-Workshare/Views/ChatView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/Ynov_dev/M1/dev_log/Ynov-Workshare/Views/LoginView/LoginView.axaml]
+[/Users/sada/Projets/Workshare/Ynov-Workshare/Views/HomeView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/sada/Projets/Workshare/Ynov-Workshare/Views/LoginView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/sada/Projets/Workshare/Ynov-Workshare/Views/MainView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

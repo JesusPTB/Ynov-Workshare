@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:Ynov_Workshare.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:CompileBindings="True"
              x:Class="Ynov_Workshare.Views.LoginView"
              x:DataType="vm:LoginViewViewModel">
+             
     <UserControl.Styles>
         <Style Selector="TextBlock.h1">
             <Setter Property="FontSize" Value="50" />

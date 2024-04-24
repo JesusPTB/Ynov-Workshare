@@ -1,3 +1,5 @@
+using System;
+using System.Reactive;
 using System.Threading.Tasks;
 using ReactiveUI;
 using Ynov_Workshare.Models;
@@ -9,12 +11,15 @@ public class LoginViewViewModel : ViewModelBase
     private string _username;
     private string _password;
     private string _statusMessage;
-    private readonly ApiService _apiService;
+    private readonly UserService _userService;
+    public ReactiveCommand<Unit, Unit> LoginCommand { get; }
 
-    public LoginViewViewModel(ApiService apiService)
+    public LoginViewViewModel(UserService  userService)
     {
-        _apiService = apiService;
+        _userService = userService;
+        LoginCommand = ReactiveCommand.CreateFromTask(LoginAsync);
     }
+    
 
     public string Username
     {
@@ -27,11 +32,13 @@ public class LoginViewViewModel : ViewModelBase
         get => _password;
         set => this.RaiseAndSetIfChanged(ref _password, value);
     }
+    
 
-    public async Task<LoginForm> LoginAsync()
+    public async Task LoginAsync()
     {
         var loginForm = new LoginForm(Username, Password);
         // Appel API au backend pour authentifier l'utilisateur
-        return await _apiService.Post<LoginForm>("api/Users/Login", loginForm);
+        var obj = await _userService.Login(loginForm);
+        Console.WriteLine(obj);
     }
 }

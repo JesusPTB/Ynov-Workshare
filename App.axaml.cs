@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI;
 using Splat;
 using Ynov_Workshare.Models;
@@ -13,19 +14,35 @@ namespace Ynov_Workshare;
 
 public class App : Application
 {
+    private UserService _userService;
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        // Créer un conteneur DI
+        var services = new ServiceCollection();
+
+        // Enregistrer ApiService en tant que service
+        services.AddScoped<ApiService>();
+        services.AddScoped<UserService>();
+
+        // Construire le ServiceProvider à partir des services enregistrés
+        var serviceProvider = services.BuildServiceProvider();
+
+        // Résoudre ApiService à partir du ServiceProvider
+         _userService = serviceProvider.GetService<UserService>();
         RegisterViews();
-        RegisterServices();
+        RegisterServices(_userService);
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
+
+
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(new List<Message>()) // TODO: Retrieve messages from db
+                DataContext = new LoginViewViewModel(_userService) // TODO: Retrieve messages from db
             };
 
         base.OnFrameworkInitializationCompleted();
@@ -37,11 +54,10 @@ public class App : Application
         Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewViewModel>));
     }
     
-    private void RegisterServices()
+    private void RegisterServices(UserService userService)
     {
-        var apiService = new ApiService();
         var messages = new ObservableCollection<Message>();
-        Locator.CurrentMutable.RegisterConstant(() => new LoginViewViewModel(apiService), typeof(LoginViewViewModel));
+        Locator.CurrentMutable.RegisterConstant(() => new LoginViewViewModel(userService), typeof(LoginViewViewModel));
         Locator.CurrentMutable.RegisterConstant(new MainWindowViewModel(messages), typeof(MainWindowViewModel));
     }
 }
