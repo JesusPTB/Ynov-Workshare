@@ -4,20 +4,24 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Ynov_Workshare.Models;
+using Ynov_Workshare.Utils;
+using Ynov_Workshare.ViewModels;
+using Ynov_Workshare.Views;
 
 namespace Ynov_Workshare;
 
 
 public class UserService
 {
-    
+    private readonly LocalStorage _localStorage;
     private readonly HttpClient _httpClient;
-    public UserService(ApiService apiService)
+    public UserService(LocalStorage localStorage)
     {
         _httpClient = new HttpClient();
         _httpClient.BaseAddress = new Uri("http://localhost:8080");
         _httpClient.DefaultRequestHeaders.Accept.Clear();
         _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        _localStorage = localStorage;
     }
     
     public string[] Paths = ["api/Users","/Login"];
@@ -36,6 +40,8 @@ public class UserService
         
         var obj =  response.Content.ReadFromJsonAsync<UserDto>();
         
+        _localStorage.SaveUserData(obj.Result);
+
         return obj.Result;
     }
 }
