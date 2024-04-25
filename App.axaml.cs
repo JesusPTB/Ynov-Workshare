@@ -1,12 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using FluentAvalonia.UI.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI;
 using Splat;
 using Ynov_Workshare.Models;
+using Ynov_Workshare.Utils;
 using Ynov_Workshare.ViewModels;
 using Ynov_Workshare.Views;
 
@@ -24,6 +27,7 @@ public class App : Application
         // Enregistrer ApiService en tant que service
         services.AddScoped<ApiService>();
         services.AddScoped<UserService>();
+        services.AddScoped<LocalStorage>();
 
         // Construire le ServiceProvider à partir des services enregistrés
         var serviceProvider = services.BuildServiceProvider();
@@ -31,8 +35,21 @@ public class App : Application
         // Résoudre ApiService à partir du ServiceProvider
          _userService = serviceProvider.GetService<UserService>();
         RegisterViews();
-        RegisterServices(_userService);
+        //RegisterServices(_userService);
     }
+    public void ChangeMainWindowDataContext(object newContext)
+    {
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            if (desktop.MainWindow.DataContext is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+        
+            desktop.MainWindow.DataContext = newContext;
+        }
+    }
+
 
     public override void OnFrameworkInitializationCompleted()
     {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ynov-Workshare")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+176f6a1b5c68123c8f1bba6809a503cbc8290990")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc0c68bbd430d8772ef250065b1a33e47a10b30f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ynov-Workshare")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ynov-Workshare")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

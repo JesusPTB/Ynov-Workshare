@@ -24,34 +24,37 @@ public class ApiService
     {
         // Implémentez la logique pour vérifier la validité du jeton ici
     }
-
-    private async Task<T> DeserializeResponse<T>(HttpResponseMessage response)
-    {
-        if (!response.IsSuccessStatusCode)
-        {
-            throw new Exception($"HTTP Error {(int)response.StatusCode}: {response.ReasonPhrase}");
-        }
-        //var obj =  response.Content.ReadFromJsonAsync<UserDto>();
-        using (var responseStream = await response.Content.ReadAsStreamAsync())
-        {
-            return await JsonSerializer.DeserializeAsync<T>(responseStream);
-        }
-    }
     
-    public async Task<T> Get<T>(string endpoint, string? token)
+    /// <summary>
+    /// Implementation de la requête get
+    /// </summary>
+    /// <param name="endpoint">l'url particulier sur laquelle la requete doit etre faite</param>
+    /// <param name="token">Le token permettant de verifier si on peut acceder à ces données.
+    /// Il n'est pas obligatoire.</param>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage?> Get(string endpoint, string? token)
     {
         //CheckTokenValidity();
         
         if(token !=null) 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-        using var response = await _httpClient.GetAsync(endpoint);
+        var response = await _httpClient.GetAsync(endpoint);
         
         response.EnsureSuccessStatusCode();
-        return await DeserializeResponse<T>(response);
+        return response;
     }
     
-    public async Task<HttpResponseMessage?> Post<T>(string endpoint, object data, string? token = null)
+    /// <summary>
+    /// Implementation générique de la methode post
+    /// </summary>
+    /// <param name="endpoint">l'url particulier sur laquelle la requete doit etre faite</param>
+    /// <param name="data">La donnée à ajouter</param>
+    /// <param name="token">Le token permettant de verifier si on peut acceder à ces données.
+    /// Il n'est pas obligatoire.</param>
+    /// <typeparam name="T">Le type de la donnée à ajouter</typeparam>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage?> Post<T>(string endpoint, T data, string? token = null)
     {
         //CheckTokenValidity();
     
@@ -59,35 +62,50 @@ public class ApiService
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         var response = await _httpClient.PostAsJsonAsync(endpoint, data);
-        var obj =  response.Content.ReadFromJsonAsync<UserDto>();
+       
         response.EnsureSuccessStatusCode();
         return response;
 
     }
 
-    public async Task<T> Put<T>(string endpoint, object data, string? token = null)
+    /// <summary>
+    /// Implementation générique de la methode put
+    /// </summary>
+    /// <param name="endpoint"></param>
+    /// <param name="data"></param>
+    /// <param name="token"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage?> Put<T>(string endpoint, T data, string? token = null)
     {
         //CheckTokenValidity();
     
         if(token != null)
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-        using var response = await _httpClient.PutAsJsonAsync(endpoint, data);
+        var response = await _httpClient.PutAsJsonAsync(endpoint, data);
         
         response.EnsureSuccessStatusCode();
-        return await DeserializeResponse<T>(response);
+        return response;
     }
 
-    public async Task<T> Delete<T>(string endpoint, string? token = null)
+    /// <summary>
+    /// Implementation générique de la methode Delete
+    /// </summary>
+    /// <param name="endpoint"></param>
+    /// <param name="token"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage?> Delete(string endpoint, string? token = null)
     {
         //CheckTokenValidity();
     
         if(token != null)
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-        using var response = await _httpClient.DeleteAsync(endpoint);
+        var response = await _httpClient.DeleteAsync(endpoint);
         response.EnsureSuccessStatusCode();
-        return await DeserializeResponse<T>(response);
+        return response;
     }
 
 }
