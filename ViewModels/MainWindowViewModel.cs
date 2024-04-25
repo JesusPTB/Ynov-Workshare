@@ -20,30 +20,32 @@ public class MainWindowViewModel : ViewModelBase
 
         ListMessages = new ObservableCollection<Message>(messages);
         SendMessageCommand = ReactiveCommand.Create(SendMessage);
-        ConnectCommand = ReactiveCommand.Create(Connect);
+        ConnectCommand = ReactiveCommand.Create(ConnectToChatHub);
+        JoinGroupCommand = ReactiveCommand.Create<string>(JoinGroup);
     }
 
     public ICommand SendMessageCommand { get; }
     public ICommand ConnectCommand { get; }
+    public ICommand JoinGroupCommand { get; }
     
     public string UserInput { get; set; } = "Anonymous";
     public string MessageInput { get; set; } = string.Empty;
 
     public ObservableCollection<Message> ListMessages { get; }
     
-    private async void Connect()
+    /// <summary>
+    /// Connect client to the SignalR ChatHub
+    /// </summary>
+    private async void ConnectToChatHub()
     {
         _connection.On<string, string>("ReceiveMessage", (user, message) =>
         {
-            var newMessage = $"{user}: {message}";
             ListMessages.Add(new Message { User = user, Content = message });
-            Console.WriteLine(newMessage);
         });
 
         try
         {
             await _connection.StartAsync();
-            Console.WriteLine("Connection started");
         }
         catch (Exception ex)
         {
@@ -53,8 +55,21 @@ public class MainWindowViewModel : ViewModelBase
 
     private async void SendMessage()
     {
-        Console.WriteLine("Sending message");
         await _connection.InvokeAsync("SendMessageToAll", UserInput, MessageInput);
-        Console.WriteLine("Message sent");
+    }
+    
+    public async void SendMessageToGroup(string groupName)
+    {
+        await _connection.InvokeAsync("SendMessageToGroup", groupName, UserInput, MessageInput);
+    }
+
+    /// <summary>
+    /// Join a group
+    /// </summary>
+    /// <param name="groupName"></param>
+    private async void JoinGroup(string groupName)
+    {
+        // await _connection.InvokeAsync("JoinGroup", groupName);
+        await _connection.InvokeAsync("JoinGroup", "test");
     }
 }
